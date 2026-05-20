@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danny & Brooke — Wedding Seating</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --warm-white: #fffefb;
+    --stone: #e8e2d9;
+    --gold: #b8955a;
+    --gold-light: #d4b37a;
+    --gold-pale: #f5eddc;
+    --deep: #2c2416;
+    --mid: #6b5d4a;
+    --muted: #9e8e7a;
+    --rose: #c9847a;
+    --rose-pale: #f8eeec;
+    --sage: #7a9a82;
+    --sage-pale: #edf3ee;
+    --blue-pale: #edf0f5;
+    --blue: #6b7fa0;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    color: var(--deep);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    text-align: center;
+    padding: 56px 24px 40px;
+    border-bottom: 1px solid var(--stone);
+    background: var(--warm-white);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .header-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(42px, 7vw, 68px);
+    letter-spacing: 0.02em;
+    color: var(--deep);
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  header h1 em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .header-date {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 10px;
+  }
+  .header-divider {
+    width: 48px;
+    height: 1px;
+    background: var(--gold-light);
+    margin: 18px auto 0;
+  }
+
+  /* SEARCH */
+  .search-section {
+    background: var(--warm-white);
+    border-bottom: 1px solid var(--stone);
+    padding: 28px 24px;
+    text-align: center;
+  }
+  .search-label {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .search-wrap {
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 12px 20px 12px 44px;
+    border: 1px solid var(--stone);
+    border-radius: 40px;
+    background: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--deep);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-wrap input:focus { border-color: var(--gold); }
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 15px;
+    pointer-events: none;
+  }
+  .search-result {
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--mid);
+    min-height: 22px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    letter-spacing: 0.02em;
+  }
+  .search-result strong {
+    font-weight: 500;
+    color: var(--gold);
+  }
+
+  /* MAIN LAYOUT */
+  .main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--stone);
+  }
+
+  /* FLOOR PLAN */
+  .floor-section { margin-bottom: 52px; }
+  .floor-outer {
+    background: var(--warm-white);
+    border: 1px solid var(--stone);
+    border-radius: 12px;
+    padding: 24px;
+    overflow-x: auto;
+  }
+  .floor-wrap {
+    position: relative;
+    width: 760px;
+    height: 520px;
+    margin: 0 auto;
+  }
+  .fixture {
+    position: absolute;
+    background: var(--stone);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+  }
+  .table-btn {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid var(--stone);
+    background: var(--warm-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transition: all 0.18s;
+    padding: 4px 3px;
+  }
+  .table-btn:hover {
+    border-color: var(--gold-light);
+    background: var(--gold-pale);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(184,149,90,0.15);
+  }
+  .table-btn.active {
+    border-color: var(--gold);
+    background: var(--gold-pale);
+    box-shadow: 0 0 0 3px rgba(184,149,90,0.18);
+  }
+  .t-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--deep);
+    line-height: 1.1;
+  }
+  .t-sub {
+    font-size: 9px;
+    font-weight: 300;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .table-btn.bridesmaids { background: var(--rose-pale); border-color: var(--rose); }
+  .table-btn.bridesmaids:hover { background: #f0dbd8; }
+  .table-btn.bridesmaids.active { border-color: var(--rose); box-shadow: 0 0 0 3px rgba(201,132,122,0.18); }
+  .table-btn.bridesmaids .t-num { color: var(--rose); }
+  .table-btn.bg { background: var(--sage-pale); border-color: var(--sage); }
+  .table-btn.bg:hover { background: #ddeae0; }
+  .table-btn.bg.active { border-color: var(--sage); box-shadow: 0 0 0 3px rgba(122,154,130,0.18); }
+  .table-btn.bg .t-num { color: var(--sage); }
+  .table-btn.vendor { background: var(--blue-pale); border-color: var(--blue); }
+  .table-btn.vendor:hover { background: #dde3ed; }
+  .table-btn.vendor.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(107,127,160,0.18); }
+  .table-btn.vendor .t-num { color: var(--blue); font-size: 10px; }
+  .table-btn.vendor .t-sub { color: var(--blue); }
+  .table-btn.sweetheart { background: #fdf0f0; border-color: #d4827a; border-width: 2px; }
+  .table-btn.sweetheart:hover { background: #fae4e2; }
+  .table-btn.sweetheart.active { box-shadow: 0 0 0 3px rgba(212,130,122,0.25); }
+  .table-btn.sweetheart .t-num { color: #b05a54; font-style: italic; font-size: 11px; }
+  .table-btn.sweetheart .t-sub { color: #c47a74; }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+  .leg-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    border: 1px solid;
+    flex-shrink: 0;
+  }
+
+  /* GUEST PANEL */
+  .guest-section { margin-bottom: 52px; }
+  .guest-panel {
+    background: var(--warm-white);
+    border: 1px solid var(--stone);
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 120px;
+  }
+  .guest-panel-header {
+    padding: 18px 24px 16px;
+    border-bottom: 1px solid var(--stone);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .guest-panel-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--deep);
+  }
+  .guest-count {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .guest-panel-empty {
+    padding: 40px 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .guest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1px;
+    background: var(--stone);
+  }
+  .guest-card {
+    background: var(--warm-white);
+    padding: 14px 18px;
+    transition: background 0.15s;
+  }
+  .guest-card:hover { background: var(--cream); }
+  .guest-card.highlight { background: var(--gold-pale); }
+  .g-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 3px;
+  }
+  .g-meal {
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .meal-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .dot-chicken { background: #b8955a; }
+  .dot-beef { background: #8a5a4a; }
+  .dot-veg { background: #7a9a82; }
+  .dot-kids { background: #6b7fa0; }
+  .g-allergy {
+    margin-top: 5px;
+    font-size: 10px;
+    color: var(--rose);
+    background: var(--rose-pale);
+    border-radius: 4px;
+    padding: 3px 7px;
+    display: inline-block;
+    letter-spacing: 0.02em;
+  }
+
+  /* MEAL LEGEND */
+  .meal-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 14px 24px;
+    border-top: 1px solid var(--stone);
+    background: var(--cream);
+  }
+  .ml-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
+
+  /* ALL TABLES VIEW */
+  .all-section {}
+  .tables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .table-card {
+    background: var(--warm-white);
+    border: 1px solid var(--stone);
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .table-card:hover {
+    border-color: var(--gold-light);
+    box-shadow: 0 4px 20px rgba(184,149,90,0.1);
+  }
+  .table-card-header {
+    padding: 12px 18px;
+    border-bottom: 1px solid var(--stone);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tc-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--deep);
+  }
+  .tc-count {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+  .table-card-guests {
+    padding: 10px 18px 14px;
+  }
+  .tc-name {
+    font-size: 12px;
+    color: var(--mid);
+    line-height: 1.8;
+    letter-spacing: 0.02em;
+  }
+  .tc-allergy-flag {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background: var(--rose);
+    border-radius: 50%;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+
+  /* TABS */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--stone);
+  }
+  .tab {
+    padding: 10px 22px;
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .tab.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
+  }
+  .tab:hover:not(.active) { color: var(--mid); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  @media (max-width: 600px) {
+    header { padding: 40px 16px 28px; }
+    .floor-wrap { width: 540px; height: 370px; }
+    .main { padding: 28px 16px 60px; }
+    .tables-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-eyebrow">Wedding Seating Arrangements</div>
+  <h1>Danny <em>&</em> Brooke</h1>
+  <div class="header-date">2026</div>
+  <div class="header-divider"></div>
+</header>
+
+<div class="search-section">
+  <div class="search-label">Find your seat</div>
+  <div class="search-wrap">
+    <span class="search-icon">&#9906;</span>
+    <input type="text" id="searchInput" placeholder="Search your name..." autocomplete="off">
+  </div>
+  <div class="search-result" id="searchResult"></div>
+</div>
+
+<div class="main">
+
+  <div class="tabs">
+    <div class="tab active" data-tab="floorplan">Floor Plan</div>
+    <div class="tab" data-tab="alltables">All Tables</div>
+  </div>
+
+  <div class="tab-content active" id="tab-floorplan">
+
+    <div class="floor-section">
+      <div class="section-title">Reception Room</div>
+      <div class="floor-outer">
+        <div class="floor-wrap" id="floor"></div>
+        <div class="legend">
+          <div class="legend-item"><div class="leg-swatch" style="background:#fff8ed;border-color:#b8955a"></div>Guest tables</div>
+          <div class="legend-item"><div class="leg-swatch" style="background:#f8eeec;border-color:#c9847a"></div>Wedding party</div>
+          <div class="legend-item"><div class="leg-swatch" style="background:#fdf0f0;border-color:#d4827a"></div>Sweetheart table</div>
+          <div class="legend-item"><div class="leg-swatch" style="background:#edf3ee;border-color:#7a9a82"></div>Groomsmen</div>
+          <div class="legend-item"><div class="leg-swatch" style="background:#edf0f5;border-color:#6b7fa0"></div>Vendors</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guest-section">
+      <div class="section-title">Guest List</div>
+      <div class="guest-panel" id="guestPanel">
+        <div class="guest-panel-empty" id="panelEmpty">Select a table above to view guests</div>
+        <div id="panelContent" style="display:none">
+          <div class="guest-panel-header">
+            <div class="guest-panel-title" id="panelTitle"></div>
+            <div class="guest-count" id="panelCount"></div>
+          </div>
+          <div class="guest-grid" id="guestGrid"></div>
+          <div class="meal-legend">
+            <div class="ml-item"><span class="meal-dot dot-chicken"></span>Chicken piccata</div>
+            <div class="ml-item"><span class="meal-dot dot-beef"></span>Chuck tenderloin</div>
+            <div class="ml-item"><span class="meal-dot dot-veg"></span>Caprese ravioli</div>
+            <div class="ml-item"><span class="meal-dot dot-kids"></span>Kids meal</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="tab-content" id="tab-alltables">
+    <div class="section-title">All Tables</div>
+    <div class="tables-grid" id="allTablesGrid"></div>
+  </div>
+
+</div>
+
+<script>
+const DATA = {
+  "1": {label:"Table 1", guests:[{name:"Kadin Angel",meal:"chicken piccata",allergy:""},{name:"Jack McDermott",meal:"chicken piccata",allergy:""},{name:"Chris Pudlo",meal:"chicken piccata",allergy:""},{name:"Clayton Wiecher",meal:"chicken piccata",allergy:""},{name:"Hayden Stork",meal:"chicken piccata",allergy:"Shellfish"},{name:"Bailey Caylor",meal:"chicken piccata",allergy:"Shellfish"},{name:"Max Thompson",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Mia Hernandez",meal:"chicken piccata",allergy:""},{name:"Case Crawford",meal:"slow roasted chuck tenderloin",allergy:"Gluten"},{name:"Sam Bushur",meal:"chicken piccata",allergy:""}]},
+  "2": {label:"Table 2", guests:[{name:"Emma Mallory",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Ashlyn Duncan",meal:"chicken piccata",allergy:""},{name:"Jake Schumaker",meal:"chicken piccata",allergy:""},{name:"Alyssa Schumaker",meal:"chicken piccata",allergy:""},{name:"Sean Miller",meal:"chicken piccata",allergy:""},{name:"Bella Miller",meal:"chicken piccata",allergy:""},{name:"Matthew Maitlen",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Katelyn Maitlen",meal:"chicken piccata",allergy:""},{name:"Trey Wilson",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Paige Wilson",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "3": {label:"Table 3", guests:[{name:"Lauren Kerr",meal:"chicken piccata",allergy:"Fish; kids: eggs, nuts, sesame, peas"},{name:"Stephen Kerr",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Reese Kerr",meal:"chicken tenders (kids meal)",allergy:""},{name:"Jesse Kerr",meal:"chicken tenders (kids meal)",allergy:""},{name:"Cameron Heathman",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Alyssa Heathman",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Asher Heathman",meal:"chicken tenders (kids meal)",allergy:""},{name:"Cora Heathman",meal:"caprese ravioli (vegetarian)",allergy:""},{name:"Ray Kerr",meal:"chicken tenders (kids meal)",allergy:"Eggs, nuts, sesame, peas"}]},
+  "4": {label:"Table 4", guests:[{name:"Rob Venable",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Liz Venable",meal:"caprese ravioli (vegetarian)",allergy:""},{name:"Calvin Venable",meal:"chicken tenders (kids meal)",allergy:""},{name:"Savannah Venable",meal:"cheese pizza (kids meal)",allergy:""},{name:"Lisa Venable",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Amy Hodge",meal:"slow roasted chuck tenderloin",allergy:""},{name:"David Hodge",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Cindy Limentato",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Sam Limentato",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "5": {label:"Table 5", guests:[{name:"Kevin Olmstead",meal:"chicken piccata",allergy:""},{name:"Ann Olmstead",meal:"chicken piccata",allergy:""},{name:"Stacey Manzana",meal:"chicken piccata",allergy:""},{name:"Greg Manzana",meal:"chicken piccata",allergy:""},{name:"Daniel Wells",meal:"chicken piccata",allergy:""},{name:"Hilary Wells",meal:"chicken piccata",allergy:""},{name:"Jon Cagle",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Faith Cagle",meal:"chicken piccata",allergy:""},{name:"Davey Wheeler",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Rachel Wheeler",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "6": {label:"Table 6", guests:[{name:"Kevin Koslofski",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Michelle Koslofski",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Rich Niebrugge",meal:"chicken piccata",allergy:""},{name:"Brenda Niebrugge",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Michael Osei",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Jennifer Simmons",meal:"chicken piccata",allergy:""},{name:"TJ Easter",meal:"chicken piccata",allergy:""},{name:"Sara Easter",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Kim Morstadt",meal:"chicken piccata",allergy:""},{name:"Anson Morstadt",meal:"chicken piccata",allergy:""}]},
+  "7": {label:"Table 7", guests:[{name:"Grace Brixa",meal:"caprese ravioli (vegetarian)",allergy:""},{name:"Caleb Bleich",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Brenda Childers",meal:"chicken piccata",allergy:""},{name:"Doug Childers",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Janet Khachaturian",meal:"chicken piccata",allergy:""},{name:"Steve Khachaturian",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Kemper Koslofski",meal:"chicken piccata",allergy:"Tree Nuts (can have peanuts)"},{name:"Alayna Schultz",meal:"chicken piccata",allergy:""},{name:"Trista Hampton",meal:"chicken piccata",allergy:""},{name:"Karl Schwarzer",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "8": {label:"Table 8", guests:[{name:"Tal Marinichev",meal:"chicken tenders (kids meal)",allergy:""},{name:"Will Schmitt",meal:"chicken piccata",allergy:""},{name:"Henry Thomas",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Tyson Thomas",meal:"chicken piccata",allergy:""},{name:"Kam Peterson",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Corey Cebulski",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Awstace Grauer",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Hope Self",meal:"chicken piccata",allergy:""},{name:"Allie McPherson",meal:"chicken piccata",allergy:""},{name:"Sophia Gibbs",meal:"chicken piccata",allergy:""}]},
+  "9": {label:"Table 9", guests:[{name:"Kirsten Cerroni",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Dave Cerroni",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Lyndi Hundman",meal:"chicken piccata",allergy:""},{name:"Tom Hundman",meal:"chicken piccata",allergy:""},{name:"Lauren Freeman",meal:"chicken piccata",allergy:""},{name:"Patrick Freeman",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Jennifer Onsrud",meal:"chicken piccata",allergy:""},{name:"Craig Onsrud",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Lexi Onsrud",meal:"chicken piccata",allergy:""}]},
+  "10": {label:"Table 10", guests:[{name:"Gigi Zera",meal:"chicken piccata",allergy:""},{name:"Caroline Carr",meal:"chicken piccata",allergy:""},{name:"Grace Fagan",meal:"chicken piccata",allergy:""},{name:"Julia Henry",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Emma Thorman",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Claire Ancevicius",meal:"chicken piccata",allergy:""},{name:"Jacque O'Neill",meal:"chicken piccata",allergy:""},{name:"Jadyn Spinks",meal:"chicken piccata",allergy:""},{name:"Nora Cerroni",meal:"chicken piccata",allergy:""},{name:"Kylie Hundman",meal:"caprese ravioli (vegetarian)",allergy:""}]},
+  "11": {label:"Table 11", guests:[{name:"Mia Alvarez",meal:"chicken piccata",allergy:""},{name:"Halle Smith",meal:"chicken piccata",allergy:""},{name:"Lilly Geirnaeirt",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Grace Geirnaeirt",meal:"caprese ravioli (vegetarian)",allergy:""},{name:"Katie Klostermeyer",meal:"chicken piccata",allergy:"Peanuts and Tree Nuts"},{name:"Camille Breen",meal:"chicken piccata",allergy:""},{name:"Anna McClure",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Caroline Kerr",meal:"chicken piccata",allergy:""},{name:"Breanna Brown",meal:"chicken piccata",allergy:""},{name:"Ashley Wells",meal:"chicken piccata",allergy:""}]},
+  "12": {label:"Table 12", guests:[{name:"Kelly McClure",meal:"chicken piccata",allergy:""},{name:"Brian McClure",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Izzy Galvan",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Carrie Galvan",meal:"chicken piccata",allergy:""},{name:"Jana Bates",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Al Bates",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Randy Boltinghouse",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Sarah Boltinghouse",meal:"chicken piccata",allergy:""},{name:"Gary Gebauer",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Doris Gebauer",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "13": {label:"Table 13", guests:[{name:"Wayne Shaw",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Nada Shaw",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Jeremy Bell",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Tanya Bell",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Cory Bell",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Conner Bell",meal:"chicken piccata",allergy:""},{name:"Jenna Purnell",meal:"chicken piccata",allergy:""},{name:"Clay Bell",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Rich McCool",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Kay McCool",meal:"chicken piccata",allergy:""},{name:"Arthur Lack",meal:"cheese pizza (kids meal)",allergy:""}]},
+  "14": {label:"Table 14", guests:[{name:"Jeanne Childers",meal:"chicken piccata",allergy:""},{name:"Alex Childers",meal:"chicken piccata",allergy:""},{name:"Ron Lack",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Adam Lack",meal:"chicken piccata",allergy:""},{name:"Katy Lack",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Abby Sweeney",meal:"chicken piccata",allergy:""},{name:"Keith Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Denise Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Davis Allen",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Emma Allen",meal:"chicken piccata",allergy:""}]},
+  "15": {label:"Table 15", guests:[{name:"Dave Wright",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Marilee Wright",meal:"chicken piccata",allergy:""},{name:"Kelly Wright",meal:"chicken piccata",allergy:""},{name:"Rusty Greenwood",meal:"chicken piccata",allergy:""},{name:"Jenny Greenwood",meal:"chicken piccata",allergy:""},{name:"Chris Childers",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Meghan Childers",meal:"chicken piccata",allergy:""},{name:"Charlotte Childers",meal:"cheese pizza (kids meal)",allergy:""}]},
+  "16": {label:"Table 16", guests:[{name:"Lorie Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Doug Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Aaron Lack",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Andrea Lack",meal:"chicken piccata",allergy:""},{name:"Kristan Creel",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Jeff Creel",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Jeff Altmyer",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Naomi Altmyer",meal:"chicken piccata",allergy:""}]},
+  "17": {label:"Table 17 — Bridesmaids", guests:[{name:"Malia Ames",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Brooke Childers",meal:"caprese ravioli (vegetarian)",allergy:""},{name:"Kailey Lack",meal:"chicken piccata",allergy:""},{name:"Emily Galvan",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Kylie Hopper",meal:"slow roasted chuck tenderloin",allergy:"Gluten"},{name:"Payton Jacob",meal:"chicken piccata",allergy:""},{name:"Kate Wilson",meal:"chicken piccata",allergy:"Dairy and gluten free"},{name:"Emma Lack",meal:"chicken piccata",allergy:""}]},
+  "18": {label:"Sweetheart Table", guests:[{name:"Brooke Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Danny Lack",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "19": {label:"Table 19 — Groomsmen", guests:[{name:"Arnie Lack",meal:"chicken piccata",allergy:""},{name:"Sammy Lack",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Tyler Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Ryan Erhard",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Andy Niebrugge",meal:"chicken piccata",allergy:""},{name:"Tyler Procajlo",meal:"chicken piccata",allergy:"Peanuts and Tree Nuts"},{name:"Kolby Koslofski",meal:"slow roasted chuck tenderloin",allergy:""}]},
+  "V": {label:"Vendor Table", guests:[{name:"Ava Aubry (video)",meal:"chicken piccata",allergy:""},{name:"Ben K (DJ)",meal:"chicken piccata",allergy:""},{name:"Ben Tschetter (photo)",meal:"slow roasted chuck tenderloin",allergy:""},{name:"Margo Tschetter (photo)",meal:"chicken piccata",allergy:""}]}
+};
+
+function mealDotClass(meal) {
+  if (meal.includes('piccata')) return 'dot-chicken';
+  if (meal.includes('tenderloin')) return 'dot-beef';
+  if (meal.includes('ravioli') || meal.includes('vegetarian')) return 'dot-veg';
+  return 'dot-kids';
+}
+function mealShort(meal) {
+  if (meal.includes('piccata')) return 'Chicken piccata';
+  if (meal.includes('tenderloin')) return 'Chuck tenderloin';
+  if (meal.includes('ravioli') || meal.includes('vegetarian')) return 'Caprese ravioli';
+  if (meal.includes('tenders')) return 'Chicken tenders';
+  if (meal.includes('pizza')) return 'Cheese pizza';
+  return meal;
+}
+
+// Floor plan layout
+const tables = [
+  {id:'1',  x:2,   y:248, w:52, h:95,  cls:''},
+  {id:'2',  x:62,  y:248, w:52, h:95,  cls:''},
+  {id:'3',  x:148, y:290, w:48, h:80,  cls:''},
+  {id:'4',  x:148, y:196, w:48, h:80,  cls:''},
+  {id:'5',  x:220, y:48,  w:82, h:46,  cls:''},
+  {id:'6',  x:314, y:48,  w:82, h:46,  cls:''},
+  {id:'7',  x:408, y:48,  w:82, h:46,  cls:''},
+  {id:'8',  x:502, y:48,  w:82, h:46,  cls:''},
+  {id:'9',  x:220, y:112, w:76, h:46,  cls:''},
+  {id:'10', x:308, y:112, w:82, h:46,  cls:''},
+  {id:'11', x:402, y:112, w:82, h:46,  cls:''},
+  {id:'12', x:496, y:112, w:82, h:46,  cls:''},
+  {id:'13', x:600, y:170, w:52, h:108, cls:''},
+  {id:'14', x:600, y:290, w:52, h:90,  cls:''},
+  {id:'15', x:520, y:228, w:44, h:72,  cls:''},
+  {id:'16', x:296, y:198, w:40, h:68,  cls:''},
+  {id:'17', x:220, y:415, w:90, h:46,  cls:'bridesmaids'},
+  {id:'18', x:380, y:415, w:106, h:46, cls:'sweetheart'},
+  {id:'19', x:508, y:415, w:90, h:46,  cls:'bg'},
+  {id:'V',  x:652, y:80,  w:90, h:46,  cls:'vendor'},
+];
+const fixtures = [
+  {label:'Stairs', x:2,   y:2,   w:118, h:100},
+  {label:'Bar',    x:2,   y:392, w:118, h:76},
+  {label:'DJ',     x:652, y:2,   w:90,  h:62},
+];
+
+const floor = document.getElementById('floor');
+
+fixtures.forEach(f => {
+  const el = document.createElement('div');
+  el.className = 'fixture';
+  el.style.cssText = `left:${f.x}px;top:${f.y}px;width:${f.w}px;height:${f.h}px`;
+  el.textContent = f.label;
+  floor.appendChild(el);
+});
+
+let activeBtn = null;
+
+tables.forEach(t => {
+  const d = DATA[t.id];
+  const btn = document.createElement('div');
+  btn.className = 'table-btn ' + (t.cls || '');
+  btn.style.cssText = `left:${t.x}px;top:${t.y}px;width:${t.w}px;height:${t.h}px`;
+  const shortLabel = t.id === '17' ? 'T17\nBrides.' : t.id === '18' ? 'Bride\n& Groom' : t.id === '19' ? 'T19\nGrsmen' : t.id === 'V' ? 'Vendors\n4 guests' : ('T' + t.id + '\n' + d.guests.length + ' guests');
+  const lines = shortLabel.split('\n');
+  btn.innerHTML = `<span class="t-num">${lines[0]}</span><span class="t-sub">${lines[1]}</span>`;
+  btn.addEventListener('click', () => {
+    if (activeBtn) activeBtn.classList.remove('active');
+    btn.classList.add('active');
+    activeBtn = btn;
+    showGuests(t.id);
+    document.getElementById('guestPanel').scrollIntoView({behavior:'smooth', block:'nearest'});
+  });
+  floor.appendChild(btn);
+});
+
+function showGuests(id, highlightName) {
+  const d = DATA[id];
+  document.getElementById('panelEmpty').style.display = 'none';
+  document.getElementById('panelContent').style.display = 'block';
+  document.getElementById('panelTitle').textContent = d.label;
+  document.getElementById('panelCount').textContent = d.guests.length + ' guests';
+  const grid = document.getElementById('guestGrid');
+  grid.innerHTML = '';
+  d.guests.forEach(g => {
+    const card = document.createElement('div');
+    card.className = 'guest-card' + (highlightName && g.name.toLowerCase().includes(highlightName) ? ' highlight' : '');
+    card.innerHTML = `<div class="g-name">${g.name}</div><div class="g-meal"><span class="meal-dot ${mealDotClass(g.meal)}"></span>${mealShort(g.meal)}</div>${g.allergy ? `<div class="g-allergy">⚠ ${g.allergy}</div>` : ''}`;
+    grid.appendChild(card);
+  });
+}
+
+// Build All Tables
+const allGrid = document.getElementById('allTablesGrid');
+Object.entries(DATA).forEach(([id, d]) => {
+  const card = document.createElement('div');
+  card.className = 'table-card';
+  const hasAllergy = d.guests.some(g => g.allergy);
+  const names = d.guests.map(g => `<span>${g.name}${g.allergy ? '<span class="tc-allergy-flag"></span>' : ''}</span>`).join(', ');
+  card.innerHTML = `<div class="table-card-header"><div class="tc-title">${d.label}</div><div class="tc-count">${d.guests.length} guests</div></div><div class="table-card-guests"><div class="tc-name">${names}</div></div>`;
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelector('[data-tab="floorplan"]').classList.add('active');
+    document.getElementById('tab-floorplan').classList.add('active');
+    if (activeBtn) activeBtn.classList.remove('active');
+    const btn = document.querySelector(`.table-btn[style*="left:${document.querySelectorAll('.table-btn')[parseInt(id)-1]?.style.left}"]`);
+    showGuests(id);
+    window.scrollTo({top: document.getElementById('guestPanel').offsetTop - 20, behavior:'smooth'});
+  });
+  allGrid.appendChild(card);
+});
+
+// Search
+const searchInput = document.getElementById('searchInput');
+const searchResult = document.getElementById('searchResult');
+
+searchInput.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (q.length < 2) { searchResult.textContent = ''; return; }
+  let found = null, foundId = null;
+  for (const [id, d] of Object.entries(DATA)) {
+    const g = d.guests.find(g => g.name.toLowerCase().includes(q));
+    if (g) { found = g; foundId = id; break; }
+  }
+  if (found) {
+    const d = DATA[foundId];
+    searchResult.innerHTML = `<strong>${found.name}</strong> is seated at <strong>${d.label}</strong>`;
+    showGuests(foundId, q);
+    if (activeBtn) activeBtn.classList.remove('active');
+    const allBtns = document.querySelectorAll('.table-btn');
+    const idx = Object.keys(DATA).indexOf(foundId);
+    if (allBtns[idx]) { allBtns[idx].classList.add('active'); activeBtn = allBtns[idx]; }
+    document.querySelector('[data-tab="floorplan"]').click();
+  } else if (q.length >= 3) {
+    searchResult.textContent = 'No guest found with that name.';
+  } else {
+    searchResult.textContent = '';
+  }
+});
+
+// Tabs
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
